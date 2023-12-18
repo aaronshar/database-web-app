@@ -1,0 +1,60 @@
+{{!-- {{/*
+Citation for current file:
+Date: 6/09/2023
+Adapted from CS340 Starter App
+Copied in the code from the github and adapted to fit our own website
+Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app 
+*/}} --}}
+
+<!-- index.hbs -->
+<h1>Products</h1>
+
+{{!-- Create a table --}}
+<table >
+
+    {{!-- Header section --}}
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Amount on Hand</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody id="products-table">
+        {{#each data}}
+        <tr data-value={{this.productID}}>
+            <td>{{this.productID}}</td>
+            <td>{{this.description}}</td>
+            <td>{{this.nicePrice}}</td>
+            <td>{{this.amountOnHand}}</td>
+            <td><button onclick="deleteProduct({{this.productID}})">Delete</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+<script src="./js/delete_product.js"></script>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Adding Data to Products</h2>
+<p>To add a new product, please enter the information below and click 'Submit'!</p>
+<fieldset>
+    <form id="add-product-form-ajax">
+        <label for="input-description">Product Description: </label>
+        <input type="text" name="input-description" id="input-description" required>
+        
+        <label for="input-price">Price: </label>
+        <input type="number" name="input-price" id="input-price" step="0.01" required min=".01">
+
+        <label for="input-amountonhand">Inventory: </label>
+        <input type="number" name="input-amountonhand" id="input-amountonhand" required min="0">
+        
+        <input type="submit">
+    </form>
+</fieldset>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_product.js"></script>

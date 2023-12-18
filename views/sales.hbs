@@ -1,0 +1,185 @@
+{{!-- {{/*
+Citation for current file:
+Date: 6/09/2023
+Adapted from CS340 Starter App
+Copied in the code from the github and adapted to fit our own website
+Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app 
+*/}} --}}
+
+<!-- index.hbs -->
+<h1 id="jump-here">Sales</h1>
+
+{{!-- Create a table --}}
+<h2>Sales Orders</h2>
+<div id="toggle-salesorder-form" style="display: none">
+
+<h3 id="orderid-display"></h3>
+<p>Update sales order information and click 'Submit'!</p>
+
+<fieldset>
+    <form id="update-salesorder-form-ajax">
+        
+        <input type="number" name="input-orderid-update" id="input-orderid-update" style="display: none">
+        
+        <label for="input-date-update">Date: </label>
+        <input type="date" name="input-date-update" id="input-date-update" required>
+        
+        <label for="input-total-update">Order Total: </label>
+        <input type="number" name="input-total-update" id="input-total-update" step="0.01" required min="0.01">
+
+        <label for="input-sales-customer-update">Customer: </label>
+        <select name="input-sales-customer-update" id="input-sales-customer-update" required>
+            <option value="">Select a Customer</option>
+            {{#each data3}}
+            <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+        </select>
+
+        <label for="input-sales-employee-update">Employee: </label>
+        <select name="input-sales-employee-update" id="input-sales-employee-update" required>
+            <option value="">Select an Employee</option>
+            {{#each data4}}
+            <option value="{{this.employeeID}}">{{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+            <option value="">NONE</option>
+        </select>
+        
+        <input type="submit">
+    </form>
+    <button onclick="cancelUpdate()">Cancel</button>
+</fieldset>
+</div>
+
+<table>
+
+    {{!-- Header section --}}
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Order Date</th>
+            <th>Customer ID</th>
+            <th>Order Total</th>
+            <th>Employee ID</th>
+            <th class="edit-column">Edit</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody id="salesorders-table">
+        {{#each data1}}
+        <tr data-value={{this.orderID}}>
+            <td>{{this.orderID}}</td>
+            <td>{{this.niceDate}}</td>
+            <td>{{this.customerID}}</td>
+            <td>{{this.niceTotal}}</td>
+            <td>{{this.employeeID}}</td>
+            <td class="edit-column"><button onclick="editSalesOrder({{this.orderID}}, `{{this.orderDate}}`, {{this.customerID}}, {{this.orderTotal}}, {{this.employeeID}})">Edit</button></td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a record to the table  --}}
+<h3>Add Data to Sales Order</h3>
+<p>To add a new sales order, please enter the information below and click 'Submit'!</p>
+<fieldset>
+    <form id="add-salesorder-form-ajax">
+        <label for="input-date">Date: </label>
+        <input type="date" name="input-date" id="input-date" required>
+        
+        <label for="input-total">Order Total: </label>
+        <input type="number" name="input-total" id="input-total" step="0.01" required min="0.01">
+
+        <label for="input-sales-customer">Customer: </label>
+        <select name="input-sales-customer" id="input-sales-customer" required>
+            <option value="">Select a Customer</option>
+            {{#each data3}}
+            <option value="{{this.customerID}}">{{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+        </select>
+
+        <label for="input-sales-employee">Employee: </label>
+        <select name="input-sales-employee" id="input-sales-employee" required>
+            <option value="">Select an Employee</option>
+            {{#each data4}}
+            <option value="{{this.employeeID}}">{{this.firstName}} {{this.lastName}}</option>
+            {{/each}}
+            <option value="">NONE</option>
+        </select>
+        
+        <input type="submit">
+    </form>
+</fieldset>
+
+
+
+<h2>Product Sales</h2>
+<table>
+
+    {{!-- Header section --}}
+    <thead>
+        <tr>
+            {{!-- {{#each data2.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}} --}}
+            <th>Product Sales ID</th>
+            <th>Product ID</th>
+            <th>Order ID</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody id="productsales-table">
+        {{#each data2}}
+        <tr>
+            <td>{{this.productSalesID}}</td>
+            <td>{{this.productID}}</td>
+            <td>{{this.orderID}}</td>
+            <td>{{this.quantity}}</td>
+            <td>{{this.nicePrice}}</td>
+            <td>{{this.subtotal}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+
+
+<h3>Add Data to Product Sales</h3>
+<p>To add a new product sales, please enter the information below and click 'Submit'!</p>
+<fieldset>
+    <form id="add-productsales-form-ajax">
+        <label for="input-quantity">Quantity: </label>
+        <input type="number" name="input-quantity" id="input-quantity" required min="1">
+        
+        <label for="input-unitprice">Unit Price: </label>
+        <input type="number" name="input-unitprice" id="input-unitprice" step="0.01" required min="0.01">
+
+        <label for="input-orderid">Order: </label>
+        <select name="input-orderid" id="input-orderid" required>
+            <option value="">Select Order:</option>
+            {{#each data6}}
+            <option value="{{this.salesOrderID}}">{{this.customerName}} {{this.niceDate}}</option>
+            {{/each}}
+        </select>
+
+        <label for="input-productid">Product: </label>
+        <select name="input-productid" id="input-productid" required>
+            <option value="">Select a Product</option>
+            {{#each data5}}
+            <option value="{{this.productID}}">{{this.description}}</option>
+            {{/each}}
+        </select>
+        
+        <input type="submit">
+    </form>
+</fieldset>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_sale.js"></script>
+<script src="./js/edit_sales_button.js"></script>
+<script src="./js/update_sales.js"></script>

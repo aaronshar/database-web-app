@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
+/*   ----- Variables  -----  */
+:root {
+    --med-blue: rgb(32, 82, 149);
+    --light-beige: rgb(197, 191, 185, 0.9);
+    --dark-blue: rgb(10, 38, 71);
+    --light-blue: rgb(99, 162, 218);
+    --transp-light-blue: rgba(44, 116, 179, 0.247);
+    --yellow: rgb(255, 201, 60);
+    --ruby-red: rgb(147, 31, 29);
+    --android-green: rgb(155, 197, 61);
+    --light-yellow: rgba(247, 231, 160, 0.692);
+    --transp-light-beige: rgb(197, 191, 185, 0.4);
+
+    --light-gray: rgb(216, 219, 226);
+    --almost-black: rgb(27, 27, 30);
+    --moonstone: rgb(88, 164, 176);
+
+    /* --custom-embellishment-name:; */
+}
+
+/*  ----- Viewport ----- elements inherited by all remaining elements ----- */
+body {
+    /* Can alternatively define in html {} or :root {} */
+    background-color: var(--light-gray);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-attachment: fixed;
+    background-blend-mode: lighten;
+    color: var(--almost-black);
+    font-family: 'Poppins', sans-serif;
+    margin-top: 80px;
+    max-width: 95%;
+    padding: 20px 5%;
+
+
+}
+
+/*  ----- Page layout blocks -----  */
+header {
+    background-color: var(--light-blue);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+
+main {
+    color: var(--dark-blue);
+    background-color: var(--transp-light-blue);
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border: 2px solid var(--dark-blue);
+}
+
+section {}
+
+article {}
+
+#topic1 {}
+
+#topic2 {}
+
+div {}
+
+aside {}
+
+footer {
+    background-color: var(--med-blue);
+    color: var(--light-beige);
+    padding: 20px 15px;
+    margin: 0;
+    border: 2px solid var(--dark-blue);
+}
+
+/* ----- Anchors ----- Text links */
+a {}
+
+a:link {}
+
+a:hover {}
+
+a:active {}
+
+a:visited {}
+
+/*  ----- Navigation ----- Override text links for navigation only.  */
+nav {}
+
+nav a {}
+
+nav a:hover {}
+
+/*  -----  Typography  ----- */
+p {}
+
+br {}
+
+ol,
+ul,
+dl {}
+
+li {}
+
+dt {}
+
+dd {}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {}
+
+h1 {
+    font-weight: 800;
+    color: var(--dark-blue);
+}
+
+h2 {
+    color: var(--med-blue);
+    border-bottom: 2px solid var(--med-blue);
+    padding: 5px;
+    font-weight: 600;
+}
+
+h3 {
+    color: var(--med-blue);
+}
+
+h4 {}
+
+h5 {}
+
+h6 {}
+
+abbr {}
+
+acronym {}
+
+address {}
+
+blockquote {}
+
+q {}
+
+cite {}
+
+em {}
+
+hr {}
+
+mark {}
+
+s {}
+
+span {}
+
+strong {}
+
+sub {}
+
+sup {}
+
+time {}
+
+/*  ----- Coding or instructional typography ----- */
+pre {}
+
+code {}
+
+kbd {}
+
+samp {}
+
+var {}
+
+del {}
+
+ins {}
+
+/*  ----- Table ----- */
+table {
+    width: 70%;
+    color: var(--dark-blue);
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+caption {
+    font-weight: bold;
+    /* font-size: x-large; */
+    margin-bottom: 1%;
+    border-bottom: solid 2px var(--med-blue);
+}
+
+thead {
+    text-align: center;
+    color: var(--almost-black);
+}
+
+tbody {
+    text-align: center;
+}
+
+tfoot {}
+
+tr {
+    /* font-size: large; */
+}
+
+tr:nth-child(even) {
+    background-color: var(--transp-light-blue);
+}
+
+th {
+    background-color: var(--light-blue);
+    /* padding: 1%; */
+}
+
+td {
+    /* padding: 1%; */
+}
+
+
+td:nth-child(1) {}
+
+colgroup {}
+
+data {}
+
+datalist {}
+
+
+/*  ----- Form ----- */
+button,
+fieldset,
+input,
+legend,
+select,
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+input,
+select,
+textarea {
+    border: 2px solid #333;
+    background-color: white;
+    border-radius: 0.25rem;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    font-family: inherit;
+    display: block;
+    box-sizing: border-box;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+}
+
+input[type="submit"] {
+    background-color: var(--dark-blue);
+    color: white;
+    border: none;
+    padding: 15px;
+    margin-top: 10px;
+    display: block;
+    width: 8rem;
+    cursor: pointer;
+}
+
+form {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: var(--transp-light-blue);
+    border: 4px solid var(--light-blue);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+fieldset {
+    margin: 0;
+    width: 90%;
+    max-width: 80rem;
+}
+
+legend {}
+
+label {
+    /* vertical-align: middle; */
+    display: inline-block;
+    margin-left: 0.25rem;
+    margin-right: 1.5rem;
+    font: bold 1.5rem;
+    margin-top: 15px;
+}
+
+label.radio {
+    margin-top: 1%;
+}
+
+label.address {
+    margin-top: 1%;
+}
+
+button {
+    border-radius: 0.25rem;
+    cursor: pointer;
+    padding: 0.3rem 0.7rem;
+    background-color: hsl(213, 73%, 50%);
+    color: white;
+    margin: 5px;
+}
+
+input {}
+
+output {}
+
+meter {}
+
+progress {}
+
+select {
+    background: url("../img/down-arrow.svg") no-repeat center right 0.75rem;
+}
+
+optgroup {}
+
+option {
+    font-size: 110%;
+    padding: 1%;
+}
+
+textarea {}
+
+
+label.checkbox {
+    display: inline;
+}
+
+input:invalid {
+    border: 3px solid var(--ruby-red)
+}
+
+input:valid {}
+
+input::placeholder {
+    color: var(--light-blue);
+}
+
+input[type="checkbox"]:checked+label {
+    color: var(--med-blue);
+    font-style: italic;
+}
+
+input:disabled {
+    background: repeating-linear-gradient(142deg, #CCCCCC, #CCCCCC 4px, #999999 22px);
+}
+
+input:focus {}
+
+/* ----- Media ----- */
+figure {
+    margin: 4px;
+    color: var(--med-blue);
+}
+
+figcaption {
+    color: var(--med-blue);
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+figure img {
+    width: 100%;
+    color: var(--med-blue);
+}
+
+svg {}
+
+picture {}
+
+source {}
+
+iframe {}
+
+video {}
+
+audio {}
+
+embed {}
+
+object {}
+
+/*  ----- Classes for alignment, positioning, widths, grids, embellishments, and animation -----  */
+/* .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  } */
+
+.biggerIcon {
+    font-size: 2em;
+    align-items: center;
+}
+
+.floatright {}
+
+.floatleft {}
+
+.center-middle {}
+
+.ten {}
+
+.twenty {}
+
+.thirty {}
+
+.forty {}
+
+.fifty {}
+
+.sixty {}
+
+.seventy {}
+
+.eighty {}
+
+.radius {}
+
+.circle {}
+
+.boxshadow {}
+
+.tshadow {}
+
+.gradient {}
+
+.shape {}
+
+@keyframes App-logo {}
+
+/*   ===== TABLET  media query overrides mobile styles ===== */
+@media all and (min-width: 600px) {}
+
+/*   ===== DESKTOP  media query overrides mobile and tablet styles ===== */
+@media all and (min-width: 1080px) {}
+
+/*   ===== PRINT  media query overrides previous styles =====  */
+@media print {}
+
+
+/* .App {
+  text-align: center;
+} */
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

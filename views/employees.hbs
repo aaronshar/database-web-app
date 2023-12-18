@@ -1,0 +1,77 @@
+{{!-- {{/*
+Citation for current file:
+Date: 6/09/2023
+Adapted from CS340 Starter App
+Copied in the code from the github and adapted to fit our own website
+Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app 
+*/}} --}}
+
+<!-- index.hbs -->
+<h1>Employees</h1>
+
+{{!-- Create a table --}}
+<table>
+
+    {{!-- Header section --}}
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody id="employees-table">
+        {{#each data}}
+        <tr>
+            <td>{{this.employeeID}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.street}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.zipCode}}</td>
+            <td>{{this.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Adding Data to Employees</h2>
+<p>To add a new employee, please enter the information below and click 'Submit'!</p>
+<fieldset>
+    <form id="add-employee-form-ajax">
+        <label for="input-employee-firstname">First Name: </label>
+        <input type="text" name="input-employee-firstname" id="input-employee-firstname" required>
+        
+        <label for="input-employee-lastname">Last Name: </label>
+        <input type="text" name="input-employee-lastname" id="input-employee-lastname" required>
+
+        <label for="input-employee-street">Street: </label>
+        <input type="text" name="input-employee-street" id="input-employee-street" required>
+
+        <label for="input-employee-city">City: </label>
+        <input type="text" name="input-employee-city" id="input-employee-city" required>
+
+        <label for="input-employee-state">State: </label>
+        <input type="text" name="input-employee-state" id="input-employee-state" required>
+
+        <label for="input-employee-zipcode">Zip Code: </label>
+        <input type="text" name="input-employee-zipcode" id="input-employee-zipcode" required>
+
+        <label for="input-employee-email">Email: </label>
+        <input type="text" name="input-employee-email" id="input-employee-email" required>
+
+        <input type="submit">
+    </form>
+</fieldset>
+
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_employee.js"></script>

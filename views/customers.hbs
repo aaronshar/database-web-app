@@ -1,0 +1,82 @@
+{{!-- {{/*
+Citation for current file:
+Date: 6/09/2023
+Adapted from CS340 Starter App
+Copied in the code from the github and adapted to fit our own website
+Source: https://github.com/osu-cs340-ecampus/nodejs-starter-app 
+*/}} --}}
+
+<!-- index.hbs -->
+
+<h1>Customers</h1>
+
+{{!-- Create a table --}}
+<table>
+
+    {{!-- Header section --}}
+    <thead>
+        <tr>
+            {{!-- {{#each data.[0]}}
+            <th>
+                {{@key}}
+            </th>
+            {{/each}} --}}
+            <th>Customer ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+
+    {{!-- Body section --}}
+    <tbody id="customers-table">
+        {{#each data}}
+        <tr>
+            <td>{{this.customerID}}</td>
+            <td>{{this.firstName}}</td>
+            <td>{{this.lastName}}</td>
+            <td>{{this.street}}</td>
+            <td>{{this.city}}</td>
+            <td>{{this.state}}</td>
+            <td>{{this.zipCode}}</td>
+            <td>{{this.email}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
+{{!-- Form to add a record to the table  --}}
+<h2>Adding Data to Customers</h2>
+<p>To add a new customer, please enter the information below and click 'Submit'!</p>
+<fieldset>
+    <form id="add-customer-form-ajax">
+        <label for="input-customer-firstname">First Name: </label>
+        <input type="text" name="input-customer-firstname" id="input-customer-firstname" required>
+        
+        <label for="input-customer-lastname">Last Name: </label>
+        <input type="text" name="input-customer-lastname" id="input-customer-lastname" required>
+
+        <label for="input-customer-street">Street: </label>
+        <input type="text" name="input-customer-street" id="input-customer-street" required>
+
+        <label for="input-customer-city">City: </label>
+        <input type="text" name="input-customer-city" id="input-customer-city" required>
+
+        <label for="input-customer-state">State: </label>
+        <input type="text" name="input-customer-state" id="input-customer-state" required>
+
+        <label for="input-customer-zipcode">Zip Code: </label>
+        <input type="text" name="input-customer-zipcode" id="input-customer-zipcode" required>
+
+        <label for="input-customer-email">Email: </label>
+        <input type="text" name="input-customer-email" id="input-customer-email" required>
+
+        <input type="submit">
+    </form>
+</fieldset>
+{{!-- Embed our javascript to handle the DOM manipulation and AJAX request --}}
+<script src="./js/add_customer.js"></script>
